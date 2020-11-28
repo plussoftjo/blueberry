@@ -25,7 +25,9 @@ class MainController extends Controller
             'categories' => $categories,
             'top_items' => $top_items,
             'items' => $items,
-            'deliverTime' => $deliverTime
+            'deliverTime' => $deliverTime,
+            "offers_items" => $offers_items,
+            "new_items" => $new_items
         ]);
     }
 
