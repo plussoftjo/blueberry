@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Orders;
 use App\Models\OrderItems;
+use App\Models\User;
 class OrdersController extends Controller
 {
     public function store(Request $request) {
@@ -30,6 +31,19 @@ class OrdersController extends Controller
                 'note' => $order_item['note'],
             ]);
         }
+
+        
+        function _IncUserPoints() {
+            $user_point = User::where('id',$orders_input['user_id'])->value('point');
+            $new_user_point = $user_point + $orders_input['total'];
+
+            User::where('id',$orders_input['user_id'])->update([
+                'point' => $new_user_point
+            ]);
+        }
+
+
+        _IncUserPoints();
 
         $order = Orders::where('id',$orders->id)->first();
 

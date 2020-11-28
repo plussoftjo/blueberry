@@ -23,6 +23,7 @@ class CreateItemsTable extends Migration
             $table->float('discount')->nullable()->default(0);
             $table->integer('stock')->default(1);
             $table->integer('new_item')->default(0);
+            $table->integer('type')->default(0);
             $table->timestamps();
         });
     }
