@@ -33,17 +33,13 @@ class OrdersController extends Controller
         }
 
         
-        function _IncUserPoints() {
             $user_point = User::where('id',$orders_input['user_id'])->value('point');
             $new_user_point = $user_point + $orders_input['total'];
 
             User::where('id',$orders_input['user_id'])->update([
                 'point' => $new_user_point
             ]);
-        }
-
-
-        _IncUserPoints();
+       
 
         $order = Orders::where('id',$orders->id)->first();
 
