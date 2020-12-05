@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87ecb01e97cbb255d5b25381130a8daa",
+    "content-hash": "c65fffa2dfea408527fab088b2420950",
     "packages": [
         {
             "name": "arrilot/laravel-widgets",
@@ -2311,6 +2311,10 @@
                 "laravel",
                 "ui"
             ],
+            "support": {
+                "issues": "https://github.com/laravel/ui/issues",
+                "source": "https://github.com/laravel/ui/tree/v3.1.0"
+            },
             "time": "2020-11-03T19:51:21+00:00"
         },
         {
@@ -9020,5 +9024,5 @@
         "php": "^7.3|^8.0"
     },
     "platform-dev": [],
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

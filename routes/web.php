@@ -23,4 +23,11 @@ Route::get('/main',function() {
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    // Orders
+    Route::get('order','App\Http\Controllers\Admin\OrderController@index');
+    // Orders Index
+    Route::get('orders/index','App\Http\Controllers\Admin\OrderController@GetIndex');
+    Route::get('order/show/{id}','App\Http\Controllers\Admin\OrderController@ShowOrder');
+    Route::post('order/update_status','App\Http\Controllers\Admin\OrderController@UpdateStatus');
 });
