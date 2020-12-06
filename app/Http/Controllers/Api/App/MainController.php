@@ -10,14 +10,14 @@ use App\Models\DeliveryTime;
 class MainController extends Controller
 {
     public function index() {
-        $categories = Categories::get();
-        $top_items = Items::take(15)->inRandomOrder()->get();
+        $categories = Categories::with('translations')->get();
+        $top_items = Items::with('translations')->take(15)->inRandomOrder()->get();
 
-        $items= Items::take(20)->inRandomOrder()->get();
+        $items= Items::with('translations')->take(20)->inRandomOrder()->get();
 
-        $offers_items = Items::take(15)->inRandomOrder()->where('discount','!=',0.00)->get();
+        $offers_items = Items::with('translations')->take(15)->inRandomOrder()->where('discount','!=',0.00)->get();
 
-        $new_items = Items::take(15)->inRandomOrder()->where('new_item',1)->get();
+        $new_items = Items::with('translations')->take(15)->inRandomOrder()->where('new_item',1)->get();
 
         $deliverTime = DeliveryTime::get();
 
@@ -32,13 +32,13 @@ class MainController extends Controller
     }
 
     public function getItemsWithCategoryId($id) {
-        $items = Items::where('categories_id',$id)->get();
+        $items = Items::with('translations')->where('categories_id',$id)->get();
 
         return response()->json($items);
     }
 
     public function search(Request $request) {
-        $items = Items::where('title','like','%'.$request->searchText.'%')->get();
+        $items = Items::with('translations')->where('title','like','%'.$request->searchText.'%')->get();
         return response()->json($items);
     }
 }
