@@ -43,3 +43,6 @@ Route::post('order/store','App\Http\Controllers\Api\App\OrdersController@store')
 
 // ----------- Search --------------//
 Route::post('search','App\Http\Controllers\Api\App\MainController@search');
+
+// ---- Check Discount //
+Route::post('discount/check','App\Http\Controllers\Api\App\MainController@checkCode');

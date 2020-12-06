@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Categories;
 use App\Models\Items;
 use App\Models\DeliveryTime;
+use App\Models\DiscountCodes;
+use App\Models\Orders;
+use App\Models\GoodsBasket;
+use App\Models\DeliverFee;
 class MainController extends Controller
 {
     public function index() {
@@ -21,13 +25,37 @@ class MainController extends Controller
 
         $deliverTime = DeliveryTime::get();
 
+        $goods_basket = GoodsBasket::first();
+
+        $deliver_fee = DeliverFee::first();
+
+        if($goods_basket !== null) {
+            
+        }else {
+            $goods_basket = GoodsBasket::create([
+                'amount' => 0,
+                'complete' => 0,
+                'qty' => 0
+            ]);
+        }
+
+        if($deliver_fee !== null) {
+            
+        }else {
+            $deliver_fee = DeliverFee::create([
+                'fee' => 0
+            ]);
+        }
+
         return response()->json([
             'categories' => $categories,
             'top_items' => $top_items,
             'items' => $items,
             'deliverTime' => $deliverTime,
             "offers_items" => $offers_items,
-            "new_items" => $new_items
+            "new_items" => $new_items,
+            'goods_basket' => $goods_basket,
+            'deliver_fee' => $deliver_fee
         ]);
     }
 
@@ -40,5 +68,28 @@ class MainController extends Controller
     public function search(Request $request) {
         $items = Items::with('translations')->where('title','like','%'.$request->searchText.'%')->get();
         return response()->json($items);
+    }
+
+    public function checkCode(Request $request) {
+        $code = $request->code;
+        $discount_code = DiscountCodes::where('code',$code)->first();
+        if($discount_code !== null) {
+            $order = Orders::where('discount_id',$discount_code->id)->where('user_id',$request->user_id)->first();
+            if($order === null) {
+                return response()->json([
+                    'status' => 0, // Not Use Avaiable
+                    'discount_code' => $discount_code
+                ]);
+            }else {
+                return response()->json([
+                    'status' => 1 // User Before
+                ]);
+            }
+        }else {
+            return response()->json([
+                'status' => 2   // Not Abailable
+            ]);
+        }
+
     }
 }

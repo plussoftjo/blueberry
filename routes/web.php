@@ -30,4 +30,14 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('orders/index','App\Http\Controllers\Admin\OrderController@GetIndex');
     Route::get('order/show/{id}','App\Http\Controllers\Admin\OrderController@ShowOrder');
     Route::post('order/update_status','App\Http\Controllers\Admin\OrderController@UpdateStatus');
+
+    // Goods Basket
+    Route::get('goodsbasket/get','App\Http\Controllers\Admin\OrderController@BasketOfGoodsGet');
+    Route::post('goodsbasket/set','App\Http\Controllers\Admin\OrderController@ChangeGoodsBasketValue');
+
+
+    // Deliver Fee
+    Route::get('deliverfee/get','App\Http\Controllers\Admin\OrderController@GetDeliveryFee');
+    Route::post('deliverfee/set','App\Http\Controllers\Admin\OrderController@SetDeliverFee');
+
 });

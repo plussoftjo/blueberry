@@ -41,6 +41,26 @@
                     </v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
+                 <v-list-item
+                  link
+                  @click="$router.push('GoodsBasket')"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      GoodsBasket
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item
+                  link
+                  @click="$router.push('DeliverFee')"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Deliver Fee
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
                 <v-list-item
                   link
                   @click="goBack()"

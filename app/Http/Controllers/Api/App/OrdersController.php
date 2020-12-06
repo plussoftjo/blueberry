@@ -21,6 +21,7 @@ class OrdersController extends Controller
             'total' => $orders_input['total'],
             'time' => $orders_input['time'],
             'note' => $orders_input['note'],
+            'discount_id'=> $orders_input['discount_id']
         ]);
 
         foreach ($orders_items_input as $order_item) {
@@ -29,6 +30,7 @@ class OrdersController extends Controller
                 'items_id' => $order_item['id'],
                 'qty' => $order_item['qty'],
                 'note' => $order_item['note'],
+                'total' => $order_item['total']
             ]);
         }
 

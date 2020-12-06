@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('time');
             $table->string('note')->nullable();
             $table->integer('status')->default(0);
+            $table->integer('discount_id')->default(0);
             $table->timestamps();
         });
     }

@@ -9,7 +9,7 @@ class OrderItems extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['orders_id','items_id','qty','note'];
+    protected $fillable = ['orders_id','items_id','qty','note','total'];
 
     public $with = ['Items'];
 
