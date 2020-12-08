@@ -48,3 +48,20 @@ Route::post('search','App\Http\Controllers\Api\App\MainController@search');
 
 // ---- Check Discount //
 Route::post('discount/check','App\Http\Controllers\Api\App\MainController@checkCode');
+
+
+
+// ------- Controller App  //
+Route::group(['prefix' => 'controller'], function () {
+    Route::post('auth/login','App\Http\Controllers\Api\Controller\AuthController@login');
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('auth/auth','App\Http\Controllers\Api\Controller\AuthController@auth');
+    });
+
+
+    // Order Controller
+    Route::get('order/index/{id}','App\Http\Controllers\Api\Controller\OrderControllers@index');
+    Route::post('order/changeUser','App\Http\Controllers\Api\Controller\OrderControllers@changeUser');
+    Route::post('order/changeStatus','App\Http\Controllers\Api\Controller\OrderControllers@changeState');
+    Route::get('main/index','App\Http\Controllers\Api\Controller\OrderControllers@MainIndex');
+});
