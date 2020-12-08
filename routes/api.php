@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth:api'], function () {
 
 // ---------- Orders --------------- //
 Route::post('order/store','App\Http\Controllers\Api\App\OrdersController@store');
+Route::get('order/show/{id}','App\Http\Controllers\Api\App\OrdersController@showOrder');
+Route::post('order/changeState','App\Http\Controllers\Api\App\OrdersController@changeOrderState');
 
 // ----------- Search --------------//
 Route::post('search','App\Http\Controllers\Api\App\MainController@search');

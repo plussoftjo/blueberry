@@ -10,6 +10,7 @@ use App\Models\DeliveryTime;
 use App\Models\DiscountCodes;
 use App\Models\Orders;
 use App\Models\GoodsBasket;
+use Illuminate\Support\Facades\DB;
 use App\Models\DeliverFee;
 class MainController extends Controller
 {
@@ -23,7 +24,7 @@ class MainController extends Controller
 
         $new_items = Items::with('translations')->take(15)->inRandomOrder()->where('new_item',1)->get();
 
-        $deliverTime = DeliveryTime::get();
+        $deliverTime = DeliveryTime::orderBy('time','asc')->get();
 
         $goods_basket = GoodsBasket::first();
 
@@ -66,8 +67,28 @@ class MainController extends Controller
     }
 
     public function search(Request $request) {
-        $items = Items::with('translations')->where('title','like','%'.$request->searchText.'%')->get();
-        return response()->json($items);
+        $_itemsSearch = Items::where('title','like','%'.$request->searchText.'%')->pluck('id');
+        $_translationsItems = DB::table('translations')
+        ->where('table_name','items')
+        ->where('column_name','title')
+        ->where('value','like','%'.$request->searchText.'%')->pluck('foreign_key');
+
+        // return response()->json(count($_translationsItems));
+        if(count($_itemsSearch) == 0 && count($_translationsItems) == 0) {
+
+        return response()->json([]);
+        }else if(count($_itemsSearch) >= 1) {
+            $items = Items::with('translations')->whereIn('id',$_itemsSearch)->get();
+            return response()->json($items);
+        }else if(count($_translationsItems) >= 1) {
+            $items = Items::with('translations')->whereIn('id',$_translationsItems)->get();
+            return response()->json($items);
+        }
+
+        // $ids = array_merge($_itemsSearch,$_translationsItems);
+
+        // $items = Items::whereIn('id',$ids)->get();
+        // return response()->json($items);
     }
 
     public function checkCode(Request $request) {

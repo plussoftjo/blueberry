@@ -47,4 +47,19 @@ class OrdersController extends Controller
 
         return response()->json($order);
     }
+    
+    public function changeOrderState(Request $request) {
+        $order = Orders::where('id',$request->order_id)->update([
+            'status' => $request->status
+        ]);
+
+        $order = Orders::where('id',$request->order_id)->first();
+        return response()->json($order);
+    }
+
+    public function showOrder($id) {
+        $order = Orders::where('id',$id)->first();
+
+        return response()->json($order);
+    }
 }

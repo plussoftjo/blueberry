@@ -2,7 +2,7 @@
     <v-container grid-list-xs>
         <v-card>
             <v-card-title primary-title>
-                سلة الخير
+                التوصيل
             </v-card-title>
             <v-card>
                 <v-text-field
