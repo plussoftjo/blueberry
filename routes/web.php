@@ -40,6 +40,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('deliverfee/get','App\Http\Controllers\Admin\OrderController@GetDeliveryFee');
     Route::post('deliverfee/set','App\Http\Controllers\Admin\OrderController@SetDeliverFee');
 
+    // Notification Send 
+    Route::post('send_notification','App\Http\Controllers\Admin\NotificationHandler@SendNotifiaction');
+
 });
 
 

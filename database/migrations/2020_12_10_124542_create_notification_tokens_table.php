@@ -16,6 +16,7 @@ class CreateNotificationTokensTable extends Migration
         Schema::create('notification_tokens', function (Blueprint $table) {
             $table->id();
             $table->string('token');
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

@@ -9,5 +9,5 @@ class NotificationToken extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['token'];
+    protected $fillable = ['token','user_id'];
 }

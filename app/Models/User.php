@@ -53,4 +53,8 @@ class User extends \TCG\Voyager\Models\User
     public function Orders() {
         return $this->hasMany('App\Models\Orders');
     }
+
+    public function NotificationToken() {
+        return $this->hasOne('App\Models\NotificationToken');
+    }
 }

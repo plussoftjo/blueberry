@@ -63,6 +63,16 @@
                 </v-list-item>
                 <v-list-item
                   link
+                  @click="$router.push('GlobalNotification')"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title>
+                      Send Notification
+                    </v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-list-item
+                  link
                   @click="goBack()"
                 >
                   <v-list-item-content>
