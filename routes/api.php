@@ -50,6 +50,9 @@ Route::post('search','App\Http\Controllers\Api\App\MainController@search');
 Route::post('discount/check','App\Http\Controllers\Api\App\MainController@checkCode');
 
 
+// ---- Notification Token --//
+Route::post('notification_token/store','App\Http\Controllers\Api\App\MainController@SaveNotificationToken');
+
 
 // ------- Controller App  //
 Route::group(['prefix' => 'controller'], function () {

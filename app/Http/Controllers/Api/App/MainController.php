@@ -12,6 +12,7 @@ use App\Models\Orders;
 use App\Models\GoodsBasket;
 use Illuminate\Support\Facades\DB;
 use App\Models\DeliverFee;
+use App\Models\NotificationToken;
 class MainController extends Controller
 {
     public function index() {
@@ -112,5 +113,19 @@ class MainController extends Controller
             ]);
         }
 
+    }
+
+    public function SaveNotificationToken(Request $request) {
+
+        $_checker = NotificationToken::where('token',$request->token)->first();
+
+        if($_checker == null) {
+            $NotificationToken = NotificationToken::create([
+                'token' => $request->token
+            ]);
+
+            return response()->json($NotificationToken);
+
+        }
     }
 }
