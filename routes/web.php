@@ -41,3 +41,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('deliverfee/set','App\Http\Controllers\Admin\OrderController@SetDeliverFee');
 
 });
+
+
+Route::get('test_notification','App\Http\Controllers\Admin\NotificationHandler@TestSendNotification');
+Route::get('reg','App\Http\Controllers\Admin\NotificationHandler@subscribe');
