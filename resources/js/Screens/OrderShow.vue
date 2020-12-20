@@ -92,7 +92,7 @@
                         qty:{{order_item.qty}}
                     </v-card-text>
                     <v-card-text>
-                        Total:{{order_item.qty * order_item.items.price}}JOD
+                        Total:{{order_item.total}}JOD
                     </v-card-text>
                     <v-card-text>
                         Note:{{order_item.note}}

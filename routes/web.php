@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     // Notification Send 
     Route::post('send_notification','App\Http\Controllers\Admin\NotificationHandler@SendNotifiaction');
+Route::get('notification_token/get','App\Http\Controllers\Admin\NotificationHandler@getToken');
+
 
 });
 

@@ -53,7 +53,6 @@ Route::post('discount/check','App\Http\Controllers\Api\App\MainController@checkC
 // ---- Notification Token --//
 Route::post('notification_token/store','App\Http\Controllers\Api\App\MainController@SaveNotificationToken');
 
-
 // ------- Controller App  //
 Route::group(['prefix' => 'controller'], function () {
     Route::post('auth/login','App\Http\Controllers\Api\Controller\AuthController@login');

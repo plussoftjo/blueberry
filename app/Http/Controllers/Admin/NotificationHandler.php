@@ -33,4 +33,7 @@ class NotificationHandler extends Controller
        
         
     }
+    public function getToken() {
+        return response()->json(NotificationToken::pluck('token'));
+    }
 }
