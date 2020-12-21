@@ -66,4 +66,7 @@ Route::group(['prefix' => 'controller'], function () {
     Route::post('order/changeUser','App\Http\Controllers\Api\Controller\OrderControllers@changeUser');
     Route::post('order/changeStatus','App\Http\Controllers\Api\Controller\OrderControllers@changeState');
     Route::get('main/index','App\Http\Controllers\Api\Controller\OrderControllers@MainIndex');
+
+    Route::get('main/paignation','App\Http\Controllers\Api\Controller\OrderControllers@getWithPaig');
+    Route::get('main/getToken','App\Http\Controllers\Api\Controller\OrderControllers@getToken');
 });

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Orders;
 use App\Models\User;
+use App\Models\NotificationToken;
 class OrderControllers extends Controller
 {
     public function index($id) {
@@ -42,5 +43,15 @@ class OrderControllers extends Controller
         $order = Orders::with('User')->with('Addresses')->where('id',$request->order_id)->first();
 
         return response()->json($order);
+    }
+
+    public function getWithPaig() {
+        $orders = Orders::with('User')->with('Addresses')->orderBy('id','desc')->paginate(10);
+
+        return response()->json($orders);
+    }
+
+    public function getToken() {
+        return response()->json(NotificationToken::pluck('token'));
     }
 }
